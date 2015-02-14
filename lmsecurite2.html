@@ -1,0 +1,458 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lmsecurite - index</title>
+</head>
+<body style="background:#fff;">
+    <!-- Caption Style -->
+    <style> 
+        .captionOrange, .captionBlack
+        {
+            color: #fff;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .captionOrange
+        {
+            background: #EB5100;
+            background-color: rgba(235, 81, 0, 0.6);
+        }
+        .captionBlack
+        {
+        	font-size:16px;
+            background: #000;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        a.captionOrange, A.captionOrange:active, A.captionOrange:visited
+        {
+        	color: #ffffff;
+        	text-decoration: none;
+        }
+        a.captionOrange:hover
+        {
+            color: #eb5100;
+            text-decoration: underline;
+            background-color: #eeeeee;
+            background-color: rgba(238, 238, 238, 0.7);
+        }
+        .bricon
+        {
+            background: url(../img/browser-icons.png);
+        }
+		
+		.slideitem {
+			background-color:white;
+			height:1000px;
+		}
+		
+		.slideitem ul{
+			list-style-type: none;
+		}
+		.slideitem li{
+			#height:80px;
+		}
+		.slideitem li img{
+			margin-right:10px;
+			max-height:100px;
+		}
+		
+		.title{
+			width:100%;
+			height:30px;
+			text-align:center;
+			text-transform:uppercase;
+			font-size:1.5em;
+			color:white;
+		}
+		
+		.title img{
+			
+		}
+		
+		.fondVert{
+		background-color : #008000;
+		}
+
+		.fondOrange{
+		background-color : #ff6600;
+		}
+
+		.fondBleu{
+		background-color : #0000ff;
+		}
+
+		.fondBleuGris{
+		background-color : #046c87;
+		}
+		
+		.slides{
+			height:1000px;
+			width:800px;;
+		}
+
+    </style>
+    <!-- it works the same with all jquery version from 1.x to 2.x -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- use jssor.slider.mini.js (40KB) instead for release -->
+    <!-- jssor.slider.mini.js = (jssor.js + jssor.slider.js) -->
+    <script type="text/javascript" src="./js/jssor.js"></script>
+    <script type="text/javascript" src="./js/jssor.slider.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            //Reference http://www.jssor.com/development/slider-with-slideshow-jquery.html
+            //Reference http://www.jssor.com/development/tool-slideshow-transition-viewer.html
+
+            var _SlideshowTransitions = [
+            //Swing Outside in Stairs
+            {$Duration: 1200, x: 0.2, y: -0.1, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $Outside: true, $Round: { $Left: 1.3, $Top: 2.5} }
+
+            //Dodge Dance Outside out Stairs
+            , { $Duration: 1500, x: 0.3, y: -0.3, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.1, 0.9], $Top: [0.1, 0.9] }, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInJump, $Top: $JssorEasing$.$EaseInJump, $Clip: $JssorEasing$.$EaseOutQuad }, $Outside: true, $Round: { $Left: 0.8, $Top: 2.5} }
+
+            //Dodge Pet Outside in Stairs
+            , { $Duration: 1500, x: 0.2, y: -0.1, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $Outside: true, $Round: { $Left: 0.8, $Top: 2.5} }
+
+            //Dodge Dance Outside in Random
+            , { $Duration: 1500, x: 0.3, y: -0.3, $Delay: 80, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Easing: { $Left: $JssorEasing$.$EaseInJump, $Top: $JssorEasing$.$EaseInJump, $Clip: $JssorEasing$.$EaseOutQuad }, $Outside: true, $Round: { $Left: 0.8, $Top: 2.5} }
+
+            //Flutter out Wind
+            , { $Duration: 1800, x: 1, y: 0.2, $Delay: 30, $Cols: 10, $Rows: 5, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $SlideOut: true, $Reverse: true, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 2050, $Easing: { $Left: $JssorEasing$.$EaseInOutSine, $Top: $JssorEasing$.$EaseOutWave, $Clip: $JssorEasing$.$EaseInOutQuad }, $Outside: true, $Round: { $Top: 1.3} }
+
+            //Collapse Stairs
+            , { $Duration: 1200, $Delay: 30, $Cols: 8, $Rows: 4, $Clip: 15, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 2049, $Easing: $JssorEasing$.$EaseOutQuad }
+
+            //Collapse Random
+            , { $Duration: 1000, $Delay: 80, $Cols: 8, $Rows: 4, $Clip: 15, $SlideOut: true, $Easing: $JssorEasing$.$EaseOutQuad }
+
+            //Vertical Chess Stripe
+            , { $Duration: 1000, y: -1, $Cols: 12, $Formation: $JssorSlideshowFormations$.$FormationStraight, $ChessMode: { $Column: 12} }
+
+            //Extrude out Stripe
+            , { $Duration: 1000, x: -0.2, $Delay: 40, $Cols: 12, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraight, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInOutExpo, $Opacity: $JssorEasing$.$EaseInOutQuad }, $Opacity: 2, $Outside: true, $Round: { $Top: 0.5} }
+
+            //Dominoes Stripe
+            , { $Duration: 2000, y: -1, $Delay: 60, $Cols: 15, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraight, $Easing: $JssorEasing$.$EaseOutJump, $Round: { $Top: 1.5} }
+            ];
+
+            var options = {
+                $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+                $AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
+                $AutoPlayInterval: 4000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+                $PauseOnHover: 1,                               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+
+                $ArrowKeyNavigation: false,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+                $SlideDuration: 500,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+                $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
+                //$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+                //$SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+                $SlideSpacing: 0, 					                //[Optional] Space between each slide in pixels, default value is 0
+                $DisplayPieces: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+                $ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+                $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+                $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+                $DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+
+                $SlideshowOptions: {                                //[Optional] Options to specify and enable slideshow or not
+                    $Class: $JssorSlideshowRunner$,                 //[Required] Class to create instance of slideshow
+                    $Transitions: _SlideshowTransitions,            //[Required] An array of slideshow transitions to play slideshow
+                    $TransitionsOrder: 1,                           //[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
+                    $ShowLink: true                                    //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
+                },
+
+                $BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
+                    $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 0,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
+                    $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
+                    $SpacingX: 10,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+                    $SpacingY: 10,                                   //[Optional] Vertical space between each item in pixel, default value is 0
+                    $Orientation: 1                                 //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
+                },
+
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                    $ChanceToShow: 2                                //[Required] 0 Never, 1 Mouse Over, 2 Always
+                }
+            };
+
+            var jssor_slider2 = new $JssorSlider$("slider2_container", options);
+
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizes
+            function ScaleSlider() {
+                var parentWidth = jssor_slider2.$Elmt.parentNode.clientWidth;
+                if (parentWidth)
+                    jssor_slider2.$ScaleWidth(Math.min(parentWidth, 800));
+                else
+                    window.setTimeout(ScaleSlider, 30);
+            }
+
+            ScaleSlider();
+
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+
+            //responsive code end
+        });
+    </script>
+    <!-- Jssor Slider Begin -->
+    <!-- You can move inline styles to css file or css block. -->
+    <div class="container" id="slider2_container" style="position: relative; width: 800px;
+        height: 800px;">
+
+        <!-- Loading Screen -->
+        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
+                background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+            <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
+                top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+        </div>
+
+        <!-- Slides Container -->
+        <div class="slides" u="slides" style="position: absolute; left: 0px; top: 0px; overflow: hidden;">
+            <div class="slideitem">
+				<div class="title fondVert"><img  src="http://www.lmsecurite.fr/gifs/fleche%20%20lumineuse%20%20droite.gif"  > Equipements urbains, Miroir, Affichage, Vitrines</div>
+				<ul>
+					<li>
+						<a href="equipement%20%20urbain.htm">
+							<img src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20range%20%20et%20%20abris%20%202%20%20roues/procity%20%20abri%20%20cycles%20%20decore.jpg"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20affichage%20%20et%20%20vitrines/procity%20%20vitincom%20%20413101+509023.jpg"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20affichage%20%20et%20%20vitrines/procity%20%20vitincom%20%20508300%20%20jour%20%20nuit.JPG"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20abri%20%20station%20%20bus/procity%20%20abribus%20%20lot.jpg"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20barrieres%20%20de%20%20ville/procity%20%20barriere%20%20de%20%20ville%20%20%20%20publicitaire%20%20bache.jpg"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20bancs/procity%20%20jardiniere%20%20et%20%20banquette%20%20estoril.JPG"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20arceaux%20%20de%20%20protection/procity%20%20protection%20%20des%20%20arbres%20%20corset1.jpg"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20arceaux%20%20de%20%20protection/procity%20%20protection%20%20des%20%20arbres%20.jpg"  >
+							</a>
+					</li>
+					<li>
+						<a href="equipement%20%20urbain.htm">
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20barrieres%20%20de%20%20ville/procity%20%20barriere%20%20de%20%20ville%20%20modulaire%20%20bicolore.JPG"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20barrieres%20%20de%20%20ville/procity%20%20barriere%20%20de%20%20ville%20%20modulaire%20%20bicolore1.JPG"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20barrieres%20%20de%20%20ville/procity%20%20barriere%20%20selective%20%201.jpg"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20bornes/procity%20%20borne%20%20animation.gif"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20arceaux%20%20de%20%20protection/procity%20%20protection%20%20des%20%20arbres%20%20grille.JPG"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20drapeaux%20%20pavoisement/procity%20%20mat%20%20de%20%20drapeau%20%20de%20%20facade.png"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20bancs/banc%20%20mora%20%20junior%20%208744d.jpg"  >
+							<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20bancs/procity%20%20banc%20%20heritage.jpg"  >
+						</a>
+					</li>
+					<li>
+						<a href="equipement%20%20urbain.htm">
+						<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20poteaux%20%20de%20%20ville/procity%20%20poteau%20%20ellipse%20%20artistique%20%20orange%20%20avec%20%20marquage.jpg"  >
+						<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20barrieres%20%20de%20%20ville/procity%20%20barriere%20%20levante.jpg"  >
+						<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20bornes/procity%20%20borne%20%20fixe%20%20ligne%20%20conviviale.jpg"  >
+						<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20corbeille/procity%20%20corbeille%20%20gascogne.JPG"  >
+						<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20corbeille/procity%20%20corbeille%20%20morvan%20%20auris1.JPG"  >
+						<img  src="http://www.lmsecurite.fr/equipement%20%20urbain/procity%20%20lignes%20%20de%20%20fabrication/procity%20%20ligne%20%20poteaux.JPG"  >
+						<img  src="http://www.lmsecurite.fr/miroirs/miroirs%20%20vialux%20%20agglomeration%20.jpg"  >
+						</a>
+					</li>
+				</ul>
+            </div>
+			
+            <div class="slideitem">
+					<div class="title fondBleu"><img  src="http://www.lmsecurite.fr/gifs/fleche%20%20lumineuse%20%20droite.gif"  > Identification, Imprimantes, signalétique</div>
+				  <ul>
+					<li>
+						<a href="identification%20%20balisage%20%20condamnation%20%20signalétique%20%20imprimantes.htm">
+						<img  src="http://www.lmsecurite.fr/imprimantes%20%20brady/imprimante%20%20brady%20%20bbp31/imprimante%20%20brady%20%20bbp31%20%20présentation%20%20avec%20%20adhésifs.jpg"  >
+						<img  src="http://www.lmsecurite.fr/imprimantes%20%20brady/imprimante%20%20brady%20%20bbp85/imprimante%20%20brady%20%20bbp85.jpg"  >
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/animation%20%20signalétique/panneauxobligation.gif"  >
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/signaletique%20%20logistique/logistique%20%20chiffres%20%20et%20%20lettres.JPG"  >
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/signaletique%20%20electrique/manchons%20%20permasleeve.jpg"  >
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/marquage%20%20au%20%20sol1.jpg"  >
+						</a>
+					</li>
+					<li>
+						<a href="identification%20%20balisage%20%20condamnation%20%20signalétique%20%20imprimantes.htm">
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/signaletique%20%20etiquette%20%20laboratoire/etiquette%20%20laboratoire.jpg"  >
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/animation%20%20signalétique/panneauxrestauration.gif"  ></a><a href="identification%20%20marqueurs%20%20de%20%20tuyauterie.htm">
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/marqueur%20%20de%20%20tuyauterie/gaz%20%20naturel.jpg"  ></a><a href="identification%20%20balisage%20%20condamnation%20%20signalétique%20%20imprimantes.htm">
+						<img  src="http://www.lmsecurite.fr/condamnation%20%20consignation/boite%20%20de%20%20consignation%20%20condamnation.jpg"  >
+						<img  src="http://www.lmsecurite.fr/condamnation%20%20consignation/condamnation%20%20electrique%20%20disjoncteur%20%20miniature.jpg"  ><
+						</a>
+					</li>
+					<li>
+						<a href="identification%20%20et%20%20signalisation%20%20photoluminescente.htm">
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/signalétique%20%20photoluminescente/photoluminescent%20%20exemple.gif"  >
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/signalétique%20%20photoluminescente/photolimescent6.jpg"  >
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/signalétique%20%20photoluminescente/isssuesecours1.gif"  >
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/signalétique%20%20photoluminescente/photolimescent7.jpg"  >
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/signalétique%20%20photoluminescente/photoluminescent%20%20exemple1.gif"  >
+						<img  src="http://www.lmsecurite.fr/signaletique%20,%20reperage%20,%20identification/signalétique%20%20photoluminescente/photoluminescente1.jpg"  >
+						</a>
+					</li>
+					</ul>
+            </div>
+			
+            <div class="slideitem">
+					<div class="title fondBleuGris"><img  src="http://www.lmsecurite.fr/gifs/fleche%20%20lumineuse%20%20droite.gif"  >Protection, Secours, Sécurité</div>
+					<ul>
+					<li>
+						<a href="protection%20,%20secours%20,%20securite.htm">
+							<img  src="http://www.lmsecurite.fr/armoires%20%20de%20%20securite/armoire%20%20ventilation%20%20filtrante%20%20melaminee.jpg"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20de%20%20securite/armoire%20%20ventilation%20%20filtrante%20%20melaminee1.jpg"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20de%20%20securite/armoire%20%20multirisque%20%2030mn%20%20feu%20%20en14470.jpg"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20de%20%20securite/bungalowphyto.jpg"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20de%20%20securite/armoire%20%20produits%20%20inflammable.JPG"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20sechantes%20%20seche%20%20chaussures%20%20bottes/armoire%20%20vestiaire%20%20sechants%20%20multi%20%20wintersteiger.jpg"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20sechantes%20%20seche%20%20chaussures%20%20bottes/armoire%20%20vestiaire%20%20sechants%20%20combi%20%20wintersteiger.jpg"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20sechantes%20%20seche%20%20chaussures%20%20bottes/armoire%20%20vestiaire%20%20sechants%20%20team%20%2040%20%20wintersteiger.jpg"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20sechantes%20%20seche%20%20chaussures%20%20bottes/sechoir%20%20ouvert%20%20mural%20%20boot%20%20chaussures%20%20bottes%20%20gants%20%20wintersteiger.jpg"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20sechantes%20%20seche%20%20chaussures%20%20bottes/sechoir%20%20ouvert%20%20innova%20%20chaussure%20%20bottes%20%20et%20%20gants%20%20wintersteiger.jpg"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20sechantes%20%20seche%20%20chaussures%20%20bottes/sechoir%20%20ouvert%20%20casque%20%20wintersteiger.jpg"  >
+							<img  src="http://www.lmsecurite.fr/armoires%20%20sechantes%20%20seche%20%20chaussures%20%20bottes/sechoir%20%20ouvert%20%20mural%20%20for4%20%20pour%20%20casques%20%20gants%20%20chaussures%20wintersteiger.jpg"  >
+						</a>
+					</li>
+					<li>
+						<a href="protection%20,%20secours%20,%20securite.htm">
+							<img  src="http://www.lmsecurite.fr/ethylotest/ethylotest%20%20drager%20%206810.jpg"  >
+							<img  src="http://www.lmsecurite.fr/ethylotest/soufflez%20%20vous%20%20saurez.jpg"  >
+							<img  src="http://www.lmsecurite.fr/douche%20%20lave%20%20oeil%20%20de%20%20securite/combine%20%20lave%20%20oeil%20%20douche%20%20de%20%20securite%20%20antigel.jpg"  >
+							<img  src="http://www.lmsecurite.fr/douche%20%20lave%20%20oeil%20%20de%20%20securite/lave%20%20oeil%20%20de%20%20securite%20%20sur%20%20pied.JPG"  >
+							<img  src="http://www.lmsecurite.fr/douche%20%20lave%20%20oeil%20%20de%20%20securite/signalisation%20%20de%20%20securite%20%20brancard.jpg"  >
+							<img  src="http://www.lmsecurite.fr/douche%20%20lave%20%20oeil%20%20de%20%20securite/signalisation%20%20de%20%20securite%20%20lave%20%20oeil.jpg"  >
+							<img  src="http://www.lmsecurite.fr/douche%20%20lave%20%20oeil%20%20de%20%20securite/signalisation%20%20de%20%20securite%20%20douche.jpg"  >
+							<img  src="http://www.lmsecurite.fr/trousses%20%20de%20%20secours/trousse%20%20de%20%20secours%20%20collectivité%20%2020%20%20personnes.jpg"  >
+							<img  src="http://www.lmsecurite.fr/lampes%20%20projecteurs%20%20et%20%20valises%20%20de%20%20securite/bagagerie%20%20de%20%20l'urgence%20%20bagheera/sacs%20%20urgence%20%20pompiers.gif"  >
+							<img  src="http://www.lmsecurite.fr/lampes%20%20projecteurs%20%20et%20%20valises%20%20de%20%20securite/bagagerie%20%20de%20%20l'urgence%20%20bagheera/bagheera%20%20stream.jpg"  >
+						</a>
+					</li>
+					<li>
+						<a href="protection%20,%20secours%20,%20securite.htm">
+						<img  src="http://www.lmsecurite.fr/balisage%20%20guidage%20%20marquage%20%20protection/butée%20%20de%20%20parking/butoir%20%20de%20%20quai%20%20caoutchouc3.jpg"  >
+						<img  src="http://www.lmsecurite.fr/balisage%20%20guidage%20%20marquage%20%20protection/passe%20%20cables/passe%20%20câble%20%20souple2.jpg"  >
+						<img  src="http://www.lmsecurite.fr/lampes%20%20projecteurs%20%20et%20%20valises%20%20de%20%20securite/animation%20%20lampe/animation%20%209430.gif"  >
+						<img  src="http://www.lmsecurite.fr/balisage%20%20guidage%20%20marquage%20%20protection/poteau%20%20de%20%20guidage/enrouleur%20%20à%20%20sangle%20%20mural%20%20personnalisable.jpg"  >
+						<img  src="http://www.lmsecurite.fr/balisage%20%20guidage%20%20marquage%20%20protection/rampe%20%20d'acces/rampe%20polypropylène%20%20jaune%20%20noire.jpg"  >
+						<img  src="http://www.lmsecurite.fr/balisage%20%20guidage%20%20marquage%20%20protection/protection%20%20d'angles/angle%20%20de%20%20protection%20%20jaune%20%20noir1.jpg"  >
+						<img  src="http://www.lmsecurite.fr/balisage%20%20guidage%20%20marquage%20%20protection/butée%20%20de%20%20parking/butoir%20%20de%20%20parking.jpg"  >
+						</a>
+					</li>
+					<li>
+						<a href="protection%20,%20secours%20,%20securite.htm">
+							<img  src="http://www.lmsecurite.fr/tapis%20%20et%20%20revetements%20%20de%20%20sol%20%20techniques/tapis%20%20dalles%20%20sport1%20.jpg"  >
+							<img  src="http://www.lmsecurite.fr/tapis%20%20et%20%20revetements%20%20de%20%20sol%20%20techniques/tapis%20%20bâtiment%20%20personnalisé6.jpg"  >
+							<img  src="http://www.lmsecurite.fr/tapis%20%20et%20%20revetements%20%20de%20%20sol%20%20techniques/tapis%20%20anti%20%20fatigue.jpg"  >
+							<img  src="http://www.lmsecurite.fr/tapis%20%20et%20%20revetements%20%20de%20%20sol%20%20techniques/dalles%20%20salles%20%20expo.jpg"  >
+							<img  src="http://www.lmsecurite.fr/tapis%20%20et%20%20revetements%20%20de%20%20sol%20%20techniques/tapis%20%20dalles%20%20sport4.jpg"  >
+							<img  src="http://www.lmsecurite.fr/tapis%20%20et%20%20revetements%20%20de%20%20sol%20%20techniques/tapis%20%20anti%20%20fatigue1.jpg"  >
+							<img  src="http://www.lmsecurite.fr/balisage%20%20guidage%20%20marquage%20%20protection/barriere/barriere%20%20industrielle%20%20jaune%20%20noire/barrière%20%20de%20%20securite%20%20industriellle%20%20arceau%20%20jaune%20%20noire5.jpg"  >
+							<img  src="http://www.lmsecurite.fr/balisage%20%20guidage%20%20marquage%20%20protection/barriere/barriere%20%20industrielle%20%20jaune%20%20noire/barrière%20%20de%20%20securite%20%20industriellle%20%20arceau%20%20jaune%20%20noire.jpg"  >
+							<img  src="http://www.lmsecurite.fr/balisage%20%20guidage%20%20marquage%20%20protection/barriere/barriere%20%20de%20%20chantier%20%20et%20%20travaux%20%20publics/barriere%20%20extensible9.jpg"  >
+							</a>
+					</li>
+				</ul>
+            </div>
+			
+            <div class="slideitem">
+						<div class="title fondOrange"><img  src="http://www.lmsecurite.fr/gifs/fleche%20%20lumineuse%20%20droite.gif"  >Signalisation</div>
+						<ul>
+							<li>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+								<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/balisage%20%20des%20%20vehicules/balisage%20%20avant%20%20arriere%20%20vu3.jpg"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+								<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/balisage%20%20des%20%20véhicules%20%20de%20%20pompiers%20%20nit%20%20273/balisage%20%20pompiers%20%20vsab%20%20nuit.JPG"  ></a> <a href="signalisation%20%20des%20%20vehicules.htm">
+								<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/balisage%20%20camion%20%20route%20%20nuit.gif"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+								<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/cone%20%20clignotant.gif"  >
+								<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/cone%20%20retractable.gif"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+								<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/balisage%20%20des%20%20véhicules%20%20de%20%20pompiers%20%20nit%20%20273/balisage%20%20pompiers%20%20lateral%20%20nuit.JPG"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules/fleche%20%20lumineuse%20%20pliable%20%20flashmate%20%20à%20%2036%20%20leds/flèche%20%20lumineuse%20%20flashmate%20%20pliable%20%20magnétique%20%2036%20%20leds.pdf">
+								<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/fleche%20%20lumineuse%20%20pliable%20%20flashmate%20%20à%20%2036%20%20leds/flèche%20%20lumineuse%20%20pliable%20%20flashmate%20%20à%20%2036%20%20leds%20%20orange1.jpg"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+								<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/bisignal%20%20orange.gif"  >
+								</a>
+							</li>
+							<li>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/gyroled%20%20mercura%20%20orange.gif"  ></a><a href="radar%20%20cinémomètre%20%20repressif.htm">
+									<img  src="http://www.lmsecurite.fr/radar%20%20cinemometre%20%20répressif/radar%20%20ultralyte%20%20LR%20%20gendarmerie.jpg"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/panneau%20%20à%20%20messages%20%20variables%20%20pmv/panneau%20%20à%20%20messages%20%20variables%20%20pmv%20%20sirac%20%20lsg700%20%20smartsign1.jpg"  >
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/rampe%20%20lumineuse%20%20defilante%20%20orange.gif"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/signalisation%20%20lumineuse%20%20moto.gif"  >
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/rampe%20%20lumineuse%20%20ultravista%20%20police.gif"  >
+								</a> 
+							</li>
+							<li>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/gyroled%20%20mercura%20%20bleu.gif"  >
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/boitier%20%20de%20%20commandes/boitier%20%20de%20%20commandes%20%20ccs12%20%20mercura.jpg"  >
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/panneau%20%20controle.gif"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/triangle%20%20lumineux%20%20de%20%20signalisation/triangle%20%20lumineux%20%20led%20%20au%20%20sol.JPG"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/triangle%20%20lumineux%20%20clignotant.gif"  >
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/gyroled%20%20mercura%20%20bleu.gif"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/triangle%20%20lumineux%20%20de%20%20signalisation/triangle%20%20lumineux%20%20leds.JPG"  ></a>&nbsp;
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/triangle%20%20lumineux%20%20de%20%20signalisation/triled%20%20gyroled%20%20mercura%20%20avec%20%20relevage%20%20electrique.jpg"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/barrière%20%20lumineuse%20%20sans%20%20texte.gif"  >
+								</a>
+								<a href="signalisation%20%20des%20%20vehicules.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/animation%20%20gifs%20%20animés%20%20signalisation/bisignal%20%20orange.gif"  >
+								</a> 
+							</li>
+							<li>
+								<a href="radar%20%20pedagogique%20%20préventif%20%20lumineux%20%20de%20%20vitesse.htm">
+									<img  src="http://www.lmsecurite.fr/radar%20%20pedagogique%20%20préventif%20%20lumineux%20%20de%20%20vitesse%20%20metis/radar%20%20pédagogique%20%20préventif%20%20métis%20%201000/radar%20%20pédagogique%20%20préventif%20%20metis%20%201000%20%20personnalisé%20%20courchevel%20%20pensez%20%20a%20%20nous.jpg"  >
+								</a>
+								<a href="radar%20%20pedagogique%20%20préventif%20%20lumineux%20%20de%20%20vitesse.htm">
+									<img  src="http://www.lmsecurite.fr/radar%20%20pedagogique%20%20préventif%20%20lumineux%20%20de%20%20vitesse%20%20metis/radar%20%20pédagogique%20%20préventif%20%20métis%20%203000/radar%20%20pédagogique%20%20préventif%20%20métis%20%20texte%20%20merci.jpg"  >
+								</a>
+								<a href="radar%20%20pedagogique%20%20préventif%20%20lumineux%20%20de%20%20vitesse.htm">
+									<img  src="http://www.lmsecurite.fr/radar%20%20pedagogique%20%20préventif%20%20lumineux%20%20de%20%20vitesse%20%20viasis/animation%20%20photos%20%20radars%20%20pédagogiques%20%20préventifs%20%20viasis/radar%20%20pedagogique%20%20préventif%20%20lumineux%20%20de%20%20vitesse%20%20viasis%20%20compact.gif"  >
+								</a>
+								<a href="ensemble%20%20portatif%20%20d'alerte.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/ensemble%20%20portatif%20%20d'alerte%20%20aux%20%20populations/ensemble%20%20mobile%20%20d'alerte%20%20ema%20%20valise%20%20fermée.jpg"  >
+								</a>
+								<a href="ensemble%20%20portatif%20%20d'alerte.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20des%20%20vehicules/ensemble%20%20portatif%20%20d'alerte%20%20aux%20%20populations/ensemble%20%20portatif%20%20d'alerte%20%20epa%20%20avec%20%20gyroled%20%20orange.jpg"  >
+								</a>
+								<a href="equipements%20%20routiers.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20routiere/animation%20%20panneaux%20%20routiers/balise%20%20j5.gif"  >
+								</a>
+								<a href="equipements%20%20routiers.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20routiere/animation%20%20panneaux%20%20routiers/balise%20%20k5d.gif">
+								</a>
+								<a href="equipements%20%20routiers.htm">
+									<img  src="http://www.lmsecurite.fr/signalisation%20%20routiere/animation%20%20panneaux%20%20routiers/panneau%20%20limitation%20%20de%20%20vitesse%20%20100.gif"  >
+								</a>
+								<a href="panneaux%20%20de%20%20signalisation%20%20lumineux%20%20préventifs.htm">
+									<img  src="http://www.lmsecurite.fr/panneaux%20%20de%20%20signalisation%20%20lumineux%20%20préventifs/panneaux%20%20routiers%20%20lumineux%20%20préventifs%20%20piéton%20%20mobile%20%20séquentiel%20%20a13a%20%20prudence.jpg"  >
+								</a>
+							</li>
+						</ul>
+            </div>
+        </div>
+
+        <a style="display: none" href="http://www.jssor.com">jQuery Slider</a>
+    </div>
+    <!-- Jssor Slider End -->
+</body>
+</html>
